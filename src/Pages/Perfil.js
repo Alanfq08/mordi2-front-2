@@ -1,7 +1,5 @@
 
 export const Perfil = ({nombre,edad}) => {
-    console.log(nombre);
-    console.log(edad);
     return (
         <div>
             <h1>Perfil</h1>

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from 'react'
 import Swal from 'sweetalert2';
 import { useForm } from '../hooks/useForm';
@@ -49,7 +48,6 @@ export const Login = () => {
                         type="text"
                         name="description"
                         className="form-control"
-                        autocomplete="off"
                         onChange={handleInputChange}
                         value={description}
                     />
