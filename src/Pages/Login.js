@@ -42,9 +42,8 @@ export const Login = () => {
         return (
             <div>
                 <h1>MORDI2 Login</h1>
-                <hr/>
                 <br/>
-                
+
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"
