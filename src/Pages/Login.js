@@ -1,4 +1,5 @@
 import axios from 'axios';
+import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from 'react'
 import Swal from 'sweetalert2';
 import { useForm } from '../hooks/useForm';
@@ -40,8 +41,10 @@ export const Login = () => {
     if (!loadprofile) {
         return (
             <div>
-                <h1>Login</h1>
-
+                <h1>MORDI2 Login</h1>
+                <hr/>
+                <br/>
+                
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"
@@ -52,7 +55,7 @@ export const Login = () => {
                         value={description}
                     />
                     <div className="d-grid m-2">
-                        <button className="btn btn-outline-primary">
+                        <button className="btn btn-primary">
                             Login
                         </button>
                     </div>
