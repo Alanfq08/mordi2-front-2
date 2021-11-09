@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Swal from 'sweetalert2';
 import { useForm } from '../hooks/useForm';
 import { Perfil } from './Perfil';
+import { BarraDeNavegacion } from '../Components/BarraDeNavegacion'
 
 export const Login = () => {
     // -----------------------------------------------------------------------------------------------------------------
@@ -40,8 +41,9 @@ export const Login = () => {
     if (!loadprofile) {
         return (
             <div>
+                <BarraDeNavegacion/>
                 <h1>MORDI2 Login</h1>
-                <br/>
+                <br />
 
                 <form onSubmit={handleSubmit}>
                     <input

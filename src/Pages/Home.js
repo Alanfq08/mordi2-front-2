@@ -1,21 +1,53 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Carousel } from 'react-bootstrap'
+import { BarraDeNavegacion } from '../Components/BarraDeNavegacion'
+import fondo from "../assets/fondo5.jpg"
+import { PieDePagina } from '../Components/PieDePagina'
 
 export const Home = () => {
 
     return (
         <div>
-            <h1>Bienvenido a Mordi2</h1>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/profile">Acceder</Link>
-                    </li>
-                    <li>
-                        <Link to="/register">Registrarse</Link>
-                    </li>
-                </ul>
-            </nav>
+            <BarraDeNavegacion />
+
+            <Carousel fade>
+                <Carousel.Item>
+                    <img
+                        className="d-block h-100"
+                        src={fondo}
+                        alt="First slide"
+                    />
+                    <Carousel.Caption>
+                        <h1>Bienvenido a Mordi2</h1>
+                        <p>Registrate o accede para ver las publicaciones.</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                        className="d-block h-100"
+                        src={fondo}
+                        alt="Second slide"
+                    />
+
+                    <Carousel.Caption>
+                        <h1>Haz publicaciones de lo que quieras</h1>
+                        <p>Podrás publicar lo que quieras cuando quieras.</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                        className="d-block h-100"
+                        src={fondo}
+                        alt="Third slide"
+                    />
+
+                    <Carousel.Caption>
+                        <h1>ES GRATIS</h1>
+                        <p>Nunca te cobraremos por usar nuestra web.</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+            </Carousel>
+            <PieDePagina/>
         </div>
     )
 }

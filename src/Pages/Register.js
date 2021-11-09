@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react'
 import Swal from 'sweetalert2';
 import { useForm } from '../hooks/useForm';
+import { BarraDeNavegacion } from '../Components/BarraDeNavegacion'
 
 export const Register = () => {
 
@@ -27,7 +28,7 @@ export const Register = () => {
     }
 
     const [{ nombre }, handleInputChange, reset] = useForm({ nombre: '' })
-    const [{ edad }, handleInputChange2,reset2] = useForm({ edad: '' })
+    const [{ edad }, handleInputChange2, reset2] = useForm({ edad: '' })
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -38,6 +39,7 @@ export const Register = () => {
 
     return (
         <div>
+            <BarraDeNavegacion/>
             <h1>Registro</h1>
 
 
