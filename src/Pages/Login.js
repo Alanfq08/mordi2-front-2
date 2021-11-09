@@ -43,7 +43,6 @@ export const Login = () => {
             <div>
                 <BarraDeNavegacion/>
                 <h1>MORDI2 Login</h1>
-                <br />
 
                 <form onSubmit={handleSubmit}>
                     <input
@@ -52,6 +51,7 @@ export const Login = () => {
                         className="form-control"
                         onChange={handleInputChange}
                         value={description}
+                        placeholder='Nombre'
                     />
                     <div className="d-grid m-2">
                         <button className="btn btn-primary">
