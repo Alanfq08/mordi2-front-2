@@ -80,7 +80,10 @@ export const Login = () => {
 
     else {
         return (
+            <>
+            <BarraDeNavegacion userID={userID}/>
             <Perfil nombre={profile} edad={age} email={email} userID={userID}/>
+            </>
         )
     }
 }
