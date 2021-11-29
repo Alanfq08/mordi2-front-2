@@ -4,17 +4,20 @@ import Swal from 'sweetalert2';
 import { useForm } from '../hooks/useForm';
 import { Perfil } from './Perfil';
 import { BarraDeNavegacion } from '../Components/BarraDeNavegacion'
-
 export const Login = () => {
     // -----------------------------------------------------------------------------------------------------------------
 
+    const urlGet = 'https://warm-retreat-82659.herokuapp.com/redsocial/Persons/';
+    const urlLogin = 'https://warm-retreat-82659.herokuapp.com/redsocial/login/';
     const [profile, setprofile] = useState();
     const [age, setage] = useState();
+    const [email, setemail] = useState();
+    const [userID, setuserID] = useState();
     const [loadprofile, setloadprofile] = useState(false);
 
     const login = () => {
         const data = { user: `${description}` };
-        axios.post('https://warm-retreat-82659.herokuapp.com/redsocial/login/', data)
+        axios.post(urlLogin, data)
             .then(response => {
                 getInfo(response.data.id);
             })
@@ -24,18 +27,18 @@ export const Login = () => {
     }
 
     const getInfo = (userId) => {
-        // console.log(userId);
-        // const data = { id: `${userId}`};
-        // const data = { id: "6b51b2d4656a4716994da6fbbb49ee21" };
-        axios.get('https://warm-retreat-82659.herokuapp.com/redsocial/Persons/', { params: { id: '6b51b2d4656a4716994da6fbbb49ee21' } })
-            .then(response => {
-                console.log(response);
-                // setprofile(res2[0].name);
-                // setage(res2[0].age);
-                // setloadprofile(true)
-            })
-            .catch(error => {
-                console.log(error);
+        axios.request({
+            method: "get", url: urlGet,
+            params: {
+                id: userId,
+            }
+        })
+            .then(res => {
+                setprofile(res.data.name)
+                setage(res.data.age)
+                setemail(res.data.email)
+                setuserID(userId)
+                setloadprofile(true)
             });
     }
     // ----------------------------------------------------------------------------------------------------------
@@ -77,7 +80,7 @@ export const Login = () => {
 
     else {
         return (
-            <Perfil nombre={profile} edad={age} />
+            <Perfil nombre={profile} edad={age} email={email} userID={userID}/>
         )
     }
 }
