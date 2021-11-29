@@ -6,40 +6,32 @@ import { BarraDeNavegacion } from '../Components/BarraDeNavegacion'
 
 export const Register = () => {
 
-    const getProfile = () => {
-        const url = "https://warm-retreat-82659.herokuapp.com/redsocial/Persons/all";
-        axios.get(url)
-            .then((res) => {
-                let res2 = res.data.filter(person => person.name === nombre);
-                if (res2.length === 0) {
-                    postProfile();
-                    return Swal.fire('¡Atencion!', 'Usuario Registrado con exito', 'success')
-                }
-                else {
-                    return Swal.fire('¡Atencion!', 'Usuario Registrado con anterioridad', 'error')
-                }
+    function registro() {
+        const data = { name: `${nombre}`, age: edad, email: email };
+        axios.post('https://warm-retreat-82659.herokuapp.com/redsocial/register/', data)
+            .then(response => {
+                    return Swal.fire('¡Atencion!', 'Usuario Registrado con exito\n por favor logeate con tu nobre en el apartado de login', 'success');
+            })
+            .catch(()=>{
+                return Swal.fire('¡Atencion!', 'Usuario Registrado con anterioridad', 'error');
             });
-    };
-
-    function postProfile() {
-        const data = { name: `${nombre}`, age: edad };
-        axios.post('https://warm-retreat-82659.herokuapp.com/redsocial/Persons/', data)
-            .then(response => console.log(response));
     }
 
     const [{ nombre }, handleInputChange, reset] = useForm({ nombre: '' })
     const [{ edad }, handleInputChange2, reset2] = useForm({ edad: '' })
+    const [{ email }, handleInputChange3, reset3] = useForm({ email: '' })
 
     const handleSubmit = (e) => {
         e.preventDefault();
         reset();
         reset2();
-        getProfile();
+        reset3();
+        registro();
     }
 
     return (
         <div>
-            <BarraDeNavegacion/>
+            <BarraDeNavegacion />
             <h1>Registro</h1>
 
 
@@ -59,6 +51,14 @@ export const Register = () => {
                     onChange={handleInputChange2}
                     value={edad}
                     placeholder="edad"
+                />
+                <input
+                    type="text"
+                    name="email"
+                    className="form-control"
+                    onChange={handleInputChange3}
+                    value={email}
+                    placeholder="email"
                 />
                 <div className="d-grid m-2">
                     <button className="btn btn-primary">

@@ -12,21 +12,32 @@ export const Login = () => {
     const [age, setage] = useState();
     const [loadprofile, setloadprofile] = useState(false);
 
-    const getProfile = () => {
-        const url = "https://warm-retreat-82659.herokuapp.com/redsocial/Persons/all";
-        axios.get(url)
-            .then((res) => {
-                let res2 = res.data.filter(person => person.name === description);
-                if (res2.length === 0) {
-                    return Swal.fire('¡Atencion!', 'Usuario no encontrado', 'warning')
-                }
-                else {
-                    setprofile(res2[0].name);
-                    setage(res2[0].age);
-                    setloadprofile(true)
-                }
+    const login = () => {
+        const data = { user: `${description}` };
+        axios.post('https://warm-retreat-82659.herokuapp.com/redsocial/login/', data)
+            .then(response => {
+                getInfo(response.data.id);
+            })
+            .catch(() => {
+                return Swal.fire('¡Atencion!', 'intenta nuevamente', 'error');
             });
-    };
+    }
+
+    const getInfo = (userId) => {
+        // console.log(userId);
+        // const data = { id: `${userId}`};
+        // const data = { id: "6b51b2d4656a4716994da6fbbb49ee21" };
+        axios.get('https://warm-retreat-82659.herokuapp.com/redsocial/Persons/', { params: { id: '6b51b2d4656a4716994da6fbbb49ee21' } })
+            .then(response => {
+                console.log(response);
+                // setprofile(res2[0].name);
+                // setage(res2[0].age);
+                // setloadprofile(true)
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
     // ----------------------------------------------------------------------------------------------------------
 
     const [{ description }, handleInputChange, reset] = useForm({ description: '' })
@@ -34,14 +45,14 @@ export const Login = () => {
         e.preventDefault();
         if (description.trim().length <= 1) return;
         reset();
-        getProfile();
+        login();
     }
 
     // -------------------------------------------------------------------------------------------------------------
     if (!loadprofile) {
         return (
             <div>
-                <BarraDeNavegacion/>
+                <BarraDeNavegacion />
                 <h1>MORDI2 Login</h1>
 
                 <form onSubmit={handleSubmit}>
@@ -59,6 +70,7 @@ export const Login = () => {
                         </button>
                     </div>
                 </form>
+
             </div>
         )
     }

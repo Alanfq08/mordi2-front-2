@@ -2,7 +2,12 @@ body{
   background-color: rgba(0, 0, 0, 0.9) !important;
 }
 h1{
-  color:whitesmoke;
+  color:whitesmoke ;
+  text-align: center;
+}
+
+h2{
+  color:whitesmoke ;
   text-align: center;
 }
 
