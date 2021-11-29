@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { Button, Container, Form, FormControl, Nav, Navbar, Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import logo from "../assets/mordi2_sin_fondo_recortada.png"
 import { useForm } from '../hooks/useForm'
 
@@ -27,6 +28,9 @@ export const BarraDeNavegacion = ({ userID }) => {
                 console.log(res.data);
                 setresultados(res.data);
                 handleShow()
+            })
+            .catch(()=>{
+                return Swal.fire('¡Atencion!', 'Hubo un error verifica que hayas iniciado sesion', 'error');
             });
     }
 
@@ -72,9 +76,9 @@ export const BarraDeNavegacion = ({ userID }) => {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Concidencias de búsqueda: {resultados.length}</Modal.Title>
+                    <Modal.Title>Concidencias de búsqueda: {resultados?.length}</Modal.Title>
                 </Modal.Header>
-                {resultados.map(function (d, idx) {
+                {resultados?.map(function (d, idx) {
                     return (
                     <Modal.Body>{d.name}</Modal.Body>
                     )})}
