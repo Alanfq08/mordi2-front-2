@@ -214,8 +214,8 @@ export const Perfil = ({ nombre, edad, email, userID }) => {
                                         <br />
                                         <p key={d.idx}>{d.text}</p>
                                         <br />
-                                        <Button variant="outline-primary" onClick={verComentarios.bind(this, d.comments)}>Ver Comentarios</Button>
-                                        <Button variant="outline-primary" onClick={comentar}>Comentar</Button>
+                                        <Button variant="primary" onClick={verComentarios.bind(this, d.comments)}>Ver Comentarios</Button>
+                                        <Button variant="primary" onClick={comentar}>Comentar</Button>
                                         <br />
                                     </Row>
                                 </>
@@ -268,7 +268,7 @@ export const Perfil = ({ nombre, edad, email, userID }) => {
             {/* MODAL PARA COMENTAR */}
             <Modal show={showComentar} onHide={handleCloseComentar}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Comntar</Modal.Title>
+                    <Modal.Title>Comentar</Modal.Title>
                 </Modal.Header>
                 <>
                     <hr></hr>
