@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { useForm } from '../hooks/useForm';
 import { Perfil } from './Perfil';
 import { BarraDeNavegacion } from '../Components/BarraDeNavegacion'
+import { PieDePagina } from '../Components/PieDePagina';
 export const Login = () => {
     // -----------------------------------------------------------------------------------------------------------------
 
@@ -56,6 +57,16 @@ export const Login = () => {
         return (
             <div>
                 <BarraDeNavegacion />
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
                 <h1>MORDI2 Login</h1>
                 <h2>Inicia Sesión con tu nombre</h2>
 
@@ -75,6 +86,22 @@ export const Login = () => {
                     </div>
                 </form>
 
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <PieDePagina/>
             </div>
         )
     }

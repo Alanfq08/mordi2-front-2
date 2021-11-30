@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap"
+import { PieDePagina } from "../Components/PieDePagina";
 
 export const Perfil = ({ nombre, edad, email, userID }) => {
 
@@ -94,7 +95,7 @@ export const Perfil = ({ nombre, edad, email, userID }) => {
         <div>
             <h1>Bienvenido {nombre}</h1>
             <h2>Edad: {edad}</h2>
-            <h2>Edad: {email}</h2>
+            <h2>Correo: {email}</h2>
             <br></br>
             <Container>
                 <Row>
@@ -119,7 +120,7 @@ export const Perfil = ({ nombre, edad, email, userID }) => {
                         {amigos?.map(function (d) {
                             return (
                                 <Row className={"border border-primary"}>
-                                    <p key={d.idx}>{d.name}</p>
+                                    <p key={d.idx}>{d.name} <br/> {d.age} años</p>
                                 </Row>
                             )
                         })}
@@ -130,14 +131,27 @@ export const Perfil = ({ nombre, edad, email, userID }) => {
                         {Followers?.map(function (d) {
                             return (
                                 <Row className={"border border-primary"}>
-                                    <p key={d.idx}>{d.name}</p>
+                                    <p key={d.idx}>{d.name} <br/> {d.age} años</p>
                                 </Row>
                             )
                         })}
                     </Col>
                 </Row>
             </Container>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
 
+            <PieDePagina/>
         </div>
     )
 }
