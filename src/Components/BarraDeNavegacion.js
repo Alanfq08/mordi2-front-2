@@ -46,7 +46,7 @@ export const BarraDeNavegacion = ({ userID }) => {
         const data = { to: id, from: userID };
         axios.post(urlFriends, data)
             .then(response => {
-                return Swal.fire('¡Atencion!', `ahora tu y ${name} son amigos`, 'success');
+                return Swal.fire('¡Atencion!', `ahora tu sigues a ${name}`, 'success');
             });
     };
 
@@ -59,7 +59,7 @@ export const BarraDeNavegacion = ({ userID }) => {
             }
         })
             .then(() => {
-                return Swal.fire('¡Atencion!', `ahora tu y ${name} YA NO son amigos`, 'success');
+                return Swal.fire('¡Atencion!', `ahora tu YA NO sigues a ${name}`, 'success');
             });
     };
 
@@ -107,10 +107,10 @@ export const BarraDeNavegacion = ({ userID }) => {
                             <Modal.Body>
                                 {d.name}
                                 <br />
-                                son amigos? {`${d.follows}`}
+                                Lo sigues? {`${d.follows}`}
                                 <br></br>
-                                <Button variant="outline-primary" onClick={handleClickHacerAmigos.bind(this, d.id, d.name)}>Agregar Amigo</Button>
-                                <Button variant="outline-danger" onClick={handleClickEliminarAmigos.bind(this, d.id, d.name)}>Eliminar Amigo</Button>
+                                <Button variant="outline-primary" onClick={handleClickHacerAmigos.bind(this, d.id, d.name)}>Seguir</Button>
+                                <Button variant="outline-danger" onClick={handleClickEliminarAmigos.bind(this, d.id, d.name)}>Dejar de Seguir</Button>
                             </Modal.Body>
                         </>
                     )

@@ -94,7 +94,7 @@ export const Perfil = ({ nombre, edad, email, userID }) => {
     return (
         <div>
             <h1>Bienvenido {nombre}</h1>
-            <h2>Edad: {edad}</h2>
+            <h2>Edad: {edad} años</h2>
             <h2>Correo: {email}</h2>
             <br></br>
             <Container>
@@ -116,42 +116,32 @@ export const Perfil = ({ nombre, edad, email, userID }) => {
             <Container>
                 <Row className={"border border-primary"}>
                     <Col className={"border border-primary"} sm={3}>
-                        <h2>Mis Amigos</h2>
+                        <h2>Los sigo</h2>
                         {amigos?.map(function (d) {
                             return (
                                 <Row className={"border border-primary"}>
-                                    <p key={d.idx}>{d.name} <br/> {d.age} años</p>
+                                    <p key={d.idx}>{d.name} <br /> {d.age} años</p>
                                 </Row>
                             )
                         })}
                     </Col>
                     <Col className={"border border-primary"} sm={6}><h2>Posts</h2></Col>
                     <Col className={"border border-primary"} sm={3}>
-                        <h2>Mis Seguidores</h2>
+                        <h2>Me siguen</h2>
                         {Followers?.map(function (d) {
                             return (
                                 <Row className={"border border-primary"}>
-                                    <p key={d.idx}>{d.name} <br/> {d.age} años</p>
+                                    <p key={d.idx}>{d.name} <br /> {d.age} años</p>
                                 </Row>
                             )
                         })}
                     </Col>
                 </Row>
             </Container>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
 
-            <PieDePagina/>
+            <br />
+
+            <PieDePagina />
         </div>
     )
 }
