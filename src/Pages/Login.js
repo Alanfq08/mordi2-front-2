@@ -57,6 +57,7 @@ export const Login = () => {
             <div>
                 <BarraDeNavegacion />
                 <h1>MORDI2 Login</h1>
+                <h2>Inicia Sesión con tu nombre</h2>
 
                 <form onSubmit={handleSubmit}>
                     <input

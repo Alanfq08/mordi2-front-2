@@ -9,12 +9,21 @@ import { useForm } from '../hooks/useForm'
 export const BarraDeNavegacion = ({ userID }) => {
 
     const urlSearch = 'https://warm-retreat-82659.herokuapp.com/redsocial/Persons/search/';
+    const urlFriends = 'https://warm-retreat-82659.herokuapp.com/redsocial/friends/';
+
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     const [resultados, setresultados] = useState();
+
+    const [{ busqueda_nombre }, handleInputChange, reset] = useForm({ busqueda_nombre: '' })
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        reset();
+        searchUser();
+    }
 
     function searchUser() {
         axios.request({
@@ -25,21 +34,36 @@ export const BarraDeNavegacion = ({ userID }) => {
             }
         })
             .then(res => {
-                console.log(res.data);
                 setresultados(res.data);
                 handleShow()
             })
-            .catch(()=>{
+            .catch(() => {
                 return Swal.fire('¡Atencion!', 'Hubo un error verifica que hayas iniciado sesion', 'error');
             });
     }
 
-    const [{ busqueda_nombre }, handleInputChange, reset] = useForm({ busqueda_nombre: '' })
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        reset();
-        searchUser();
-    }
+    const handleClickHacerAmigos = (id, name) => {
+        const data = { to: id, from: userID };
+        axios.post(urlFriends, data)
+            .then(response => {
+                handleClose()
+                handleShow()
+                return Swal.fire('¡Atencion!', `ahora tu y ${name} son amigos`, 'success');
+            });
+    };
+
+    const handleClickEliminarAmigos = (id, name) => {
+        axios.request({
+            method: "delete", url: urlFriends,
+            params: {
+                from: userID,
+                to: id,
+            }
+        })
+            .then(res => {
+                return Swal.fire('¡Atencion!', `ahora tu y ${name} YA NO son amigos`, 'success');
+            });
+    };
 
     return (
         <div>
@@ -78,13 +102,21 @@ export const BarraDeNavegacion = ({ userID }) => {
                 <Modal.Header closeButton>
                     <Modal.Title>Concidencias de búsqueda: {resultados?.length}</Modal.Title>
                 </Modal.Header>
-                {resultados?.map(function (d, idx) {
+                {resultados?.map(function (d) {
                     return (
-                    <Modal.Body>{d.name}</Modal.Body>
-                    )})}
-
-                {/* <Modal.Body>hola</Modal.Body>
-                <Modal.Body>hola2</Modal.Body> */}
+                        <>
+                            <hr></hr>
+                            <Modal.Body>
+                                {d.name}
+                                <br />
+                                son amigos? {`${d.follows}`}
+                                <br></br>
+                                <Button variant="outline-primary" onClick={handleClickHacerAmigos.bind(this, d.id, d.name)}>Agregar Amigo</Button>
+                                <Button variant="outline-danger" onClick={handleClickEliminarAmigos.bind(this, d.id, d.name)}>Eliminar Amigo</Button>
+                            </Modal.Body>
+                        </>
+                    )
+                })}
                 <Modal.Footer>
                     <Button variant="primary" onClick={handleClose}>
                         Cerrar
