@@ -3,6 +3,8 @@ import React from 'react'
 import Swal from 'sweetalert2';
 import { useForm } from '../hooks/useForm';
 import { BarraDeNavegacion } from '../Components/BarraDeNavegacion'
+import { Container } from 'react-bootstrap';
+import { PieDePagina } from '../Components/PieDePagina';
 
 export const Register = () => {
 
@@ -10,9 +12,9 @@ export const Register = () => {
         const data = { name: `${nombre}`, age: edad, email: email };
         axios.post('https://warm-retreat-82659.herokuapp.com/redsocial/register/', data)
             .then(response => {
-                    return Swal.fire('¡Atencion!', 'Usuario Registrado con exito\n por favor logeate con tu nobre en el apartado de login', 'success');
+                return Swal.fire('¡Atencion!', 'Usuario Registrado con exito\n por favor logeate con tu nobre en el apartado de login', 'success');
             })
-            .catch(()=>{
+            .catch(() => {
                 return Swal.fire('¡Atencion!', 'Usuario Registrado con anterioridad', 'error');
             });
     }
@@ -32,40 +34,41 @@ export const Register = () => {
     return (
         <div>
             <BarraDeNavegacion />
-            <h1>Registro</h1>
-
-
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="nombre"
-                    className="form-control"
-                    onChange={handleInputChange}
-                    value={nombre}
-                    placeholder="nombre"
-                />
-                <input
-                    type="text"
-                    name="edad"
-                    className="form-control"
-                    onChange={handleInputChange2}
-                    value={edad}
-                    placeholder="edad"
-                />
-                <input
-                    type="text"
-                    name="email"
-                    className="form-control"
-                    onChange={handleInputChange3}
-                    value={email}
-                    placeholder="email"
-                />
-                <div className="d-grid m-2">
-                    <button className="btn btn-primary">
-                        Login
-                    </button>
-                </div>
-            </form>
+            <Container>
+                <h1>Registro</h1>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        name="nombre"
+                        className="form-control"
+                        onChange={handleInputChange}
+                        value={nombre}
+                        placeholder="nombre"
+                    />
+                    <input
+                        type="text"
+                        name="edad"
+                        className="form-control"
+                        onChange={handleInputChange2}
+                        value={edad}
+                        placeholder="edad"
+                    />
+                    <input
+                        type="text"
+                        name="email"
+                        className="form-control"
+                        onChange={handleInputChange3}
+                        value={email}
+                        placeholder="email"
+                    />
+                    <div className="d-grid m-2">
+                        <button className="btn btn-primary">
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </Container>
+            <PieDePagina/>
         </div>
     )
 }

@@ -5,6 +5,7 @@ import { useForm } from '../hooks/useForm';
 import { Perfil } from './Perfil';
 import { BarraDeNavegacion } from '../Components/BarraDeNavegacion'
 import { PieDePagina } from '../Components/PieDePagina';
+import { Container } from 'react-bootstrap';
 export const Login = () => {
     // -----------------------------------------------------------------------------------------------------------------
 
@@ -57,51 +58,53 @@ export const Login = () => {
         return (
             <div>
                 <BarraDeNavegacion />
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
 
-                <h1>MORDI2 Login</h1>
-                <h2>Inicia Sesión con tu nombre</h2>
+                <Container>
+                    <h1>MORDI2 Login</h1>
+                    <h2>Inicia Sesión con tu nombre</h2>
 
-                <form onSubmit={handleSubmit}>
-                    <input
-                        type="text"
-                        name="description"
-                        className="form-control"
-                        onChange={handleInputChange}
-                        value={description}
-                        placeholder='Nombre'
-                    />
-                    <div className="d-grid m-2">
-                        <button className="btn btn-primary">
-                            Login
-                        </button>
-                    </div>
-                </form>
+                    <form onSubmit={handleSubmit}>
+                        <input
+                            type="text"
+                            name="description"
+                            className="form-control"
+                            onChange={handleInputChange}
+                            value={description}
+                            placeholder='Nombre'
+                        />
+                        <div className="d-grid m-2">
+                            <button className="btn btn-primary">
+                                Login
+                            </button>
+                        </div>
+                    </form>
+                </Container>
 
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <PieDePagina/>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <PieDePagina />
             </div>
         )
     }
@@ -109,8 +112,8 @@ export const Login = () => {
     else {
         return (
             <>
-            <BarraDeNavegacion userID={userID}/>
-            <Perfil nombre={profile} edad={age} email={email} userID={userID}/>
+                <BarraDeNavegacion userID={userID} />
+                <Perfil nombre={profile} edad={age} email={email} userID={userID} />
             </>
         )
     }
