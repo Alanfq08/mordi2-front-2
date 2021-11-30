@@ -46,8 +46,6 @@ export const BarraDeNavegacion = ({ userID }) => {
         const data = { to: id, from: userID };
         axios.post(urlFriends, data)
             .then(response => {
-                handleClose()
-                handleShow()
                 return Swal.fire('¡Atencion!', `ahora tu y ${name} son amigos`, 'success');
             });
     };
@@ -60,7 +58,7 @@ export const BarraDeNavegacion = ({ userID }) => {
                 to: id,
             }
         })
-            .then(res => {
+            .then(() => {
                 return Swal.fire('¡Atencion!', `ahora tu y ${name} YA NO son amigos`, 'success');
             });
     };
