@@ -174,6 +174,18 @@ export const Perfil = ({ nombre, edad, email, userID }) => {
             });
     };
 
+    function prueba() {
+        const data = { userId: `${userID}`, comment: `${inputComentario}`, postId:`61929cafe23d90cdeba8191d`};
+        axios.post(urlComments, data)
+            .then(response => {
+                console.log(response);
+                return Swal.fire('¡Atencion!', `Comnetario creada con exito`, 'success');
+            })
+            .catch(() => {
+                return Swal.fire('¡Atencion!', 'No se pudo publicar', 'error');
+            });
+    }
+    
     return (
         <div>
             <h1>Bienvenido {nombre}</h1>
@@ -358,6 +370,9 @@ export const Perfil = ({ nombre, edad, email, userID }) => {
                 </Modal.Footer>
             </Modal>
 
+            <Button variant="primary" onClick={prueba}>
+                        prueba
+                    </Button>
             <PieDePagina />
         </div>
     )
