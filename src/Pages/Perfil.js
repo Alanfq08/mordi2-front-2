@@ -95,18 +95,6 @@ export const Perfil = ({ nombre, edad, email, userID }) => {
         obtenerFollowers();
 
 
-    const ActualizarAmigos = () => {
-        obtenerAmigos();
-    };
-
-    const ActualizarPosts = () => {
-        obtenerPosts();
-    };
-
-    const ActualizarFollowers = () => {
-        obtenerFollowers();
-    };
-
     function verComentarios(comentarios) {
         if (comentarios) {
             setComentarios(comentarios);
@@ -174,17 +162,17 @@ export const Perfil = ({ nombre, edad, email, userID }) => {
             });
     };
 
-    function prueba() {
-        const data = { userId: `${userID}`, comment: `${inputComentario}`, postId:`61929cafe23d90cdeba8191d`};
-        axios.post(urlComments, data)
-            .then(response => {
-                console.log(response);
-                return Swal.fire('¡Atencion!', `Comnetario creada con exito`, 'success');
-            })
-            .catch(() => {
-                return Swal.fire('¡Atencion!', 'No se pudo publicar', 'error');
-            });
-    }
+    // function prueba() {
+    //     const data = { userId: `${userID}`, comment: `${inputComentario}`, postId:`61929cafe23d90cdeba8191d`};
+    //     axios.post(urlComments, data)
+    //         .then(response => {
+    //             console.log(response);
+    //             return Swal.fire('¡Atencion!', `Comnetario creada con exito`, 'success');
+    //         })
+    //         .catch(() => {
+    //             return Swal.fire('¡Atencion!', 'No se pudo publicar', 'error');
+    //         });
+    // }
     
     return (
         <div>
@@ -194,19 +182,11 @@ export const Perfil = ({ nombre, edad, email, userID }) => {
             <br></br>
             <Container>
                 <Row>
-                    <Col sm={3}>
-                        <Button variant="primary" onClick={ActualizarAmigos}>Actualizar Amigos</Button>
-                    </Col>
                     <Col sm={6}>
-                        <Button variant="primary" onClick={ActualizarPosts}>Actualizar Publicaciones</Button>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <Button variant="primary" onClick={publicar}>Publicar Algo</Button>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <Button variant="primary" onClick={misPublicaciones}>Mis Publicaciones</Button>
-                    </Col>
-                    <Col sm={3}>
-                        <Button variant="primary" onClick={ActualizarFollowers}>Actualizar Seguidores</Button>
-
                     </Col>
                 </Row>
             </Container>
@@ -370,9 +350,9 @@ export const Perfil = ({ nombre, edad, email, userID }) => {
                 </Modal.Footer>
             </Modal>
 
-            <Button variant="primary" onClick={prueba}>
+            {/* <Button variant="primary" onClick={prueba}>
                         prueba
-                    </Button>
+                    </Button> */}
             <PieDePagina />
         </div>
     )

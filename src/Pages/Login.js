@@ -15,18 +15,6 @@ export const Login = () => {
     const [age, setage] = useState();
     const [email, setemail] = useState();
     const [userID, setuserID] = useState();
-    const [loadprofile, setloadprofile] = useState(false);
-
-    const login = () => {
-        const data = { user: `${description}` };
-        axios.post(urlLogin, data)
-            .then(response => {
-                getInfo(response.data.id);
-            })
-            .catch(() => {
-                return Swal.fire('¡Atencion!', 'intenta nuevamente', 'error');
-            });
-    }
 
     const getInfo = (userId) => {
         axios.request({
@@ -40,7 +28,25 @@ export const Login = () => {
                 setage(res.data.age)
                 setemail(res.data.email)
                 setuserID(userId)
-                setloadprofile(true)
+                sessionStorage.userID = userId;
+            });
+    }
+
+    if (sessionStorage.userID) {
+        console.log("estas logeado");
+        let llave  = sessionStorage.userID;
+        console.log(llave);
+        getInfo(llave);
+    }
+
+    const login = () => {
+        const data = { user: `${description}` };
+        axios.post(urlLogin, data)
+            .then(response => {
+                getInfo(response.data.id);
+            })
+            .catch(() => {
+                return Swal.fire('¡Atencion!', 'intenta nuevamente', 'error');
             });
     }
     // ----------------------------------------------------------------------------------------------------------
@@ -54,7 +60,7 @@ export const Login = () => {
     }
 
     // -------------------------------------------------------------------------------------------------------------
-    if (!loadprofile) {
+    if (!sessionStorage.userID) {
         return (
             <div>
                 <BarraDeNavegacion />
