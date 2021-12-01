@@ -1,7 +1,10 @@
 import React from 'react'
 import { Carousel } from 'react-bootstrap'
 import { BarraDeNavegacion } from '../Components/BarraDeNavegacion'
-import fondo from "../assets/fondo5.jpg"
+import fondo1 from "../assets/background.jpg"
+import fondo2 from "../assets/background2.jpg"
+import fondo3 from "../assets/background3.jpg"
+
 import { PieDePagina } from '../Components/PieDePagina'
 
 export const Home = () => {
@@ -14,7 +17,7 @@ export const Home = () => {
                 <Carousel.Item>
                     <img
                         className="d-block h-100"
-                        src={fondo}
+                        src={fondo1}
                         alt="First slide"
                     />
                     <Carousel.Caption>
@@ -25,7 +28,7 @@ export const Home = () => {
                 <Carousel.Item>
                     <img
                         className="d-block h-100"
-                        src={fondo}
+                        src={fondo2}
                         alt="Second slide"
                     />
 
@@ -37,7 +40,7 @@ export const Home = () => {
                 <Carousel.Item>
                     <img
                         className="d-block h-100"
-                        src={fondo}
+                        src={fondo3}
                         alt="Third slide"
                     />
 
